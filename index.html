@@ -3,121 +3,153 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DogeWallet Pro - الموقع المركزي</title>
+    <title>Dogecoin Official Portal - الموقع الرسمي</title>
     <style>
+        :root {
+            --doge-gold: #cb9838;
+            --doge-dark: #18191a;
+            --doge-card: #242526;
+            --text-main: #ffffff;
+            --text-secondary: #b0b3b8;
+        }
         body {
-            background-color: #121212;
-            color: #ffffff;
-            font-family: Tahoma, sans-serif;
+            background-color: var(--doge-dark);
+            color: var(--text-main);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        header {
+            background-color: var(--doge-card);
+            padding: 20px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 2px solid var(--doge-gold);
+        }
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            font-size: 24px;
+            font-weight: bold;
+            color: var(--doge-gold);
+        }
+        .logo span {
+            font-size: 35px;
+        }
+        main {
+            flex: 1;
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh;
+            padding: 20px;
         }
-        .container {
-            background-color: #1f1f1f;
-            padding: 30px;
-            border-radius: 15px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+        .hero-card {
+            background-color: var(--doge-card);
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.6);
             width: 100%;
-            max-width: 400px;
+            max-width: 500px;
             text-align: center;
+            border: 1px solid #333;
         }
-        input {
-            width: 85%;
-            padding: 12px;
-            margin: 15px 0;
-            border-radius: 8px;
-            border: 1px solid #444;
-            background-color: #2c2c2c;
-            color: #fff;
-            font-size: 16px;
+        h1 {
+            color: var(--doge-gold);
+            margin-bottom: 10px;
         }
-        button {
-            background-color: #ffb300;
+        p {
+            color: var(--text-secondary);
+            font-size: 15px;
+            line-height: 1.6;
+        }
+        .btn-official {
+            background-color: var(--doge-gold);
             color: #000;
             border: none;
-            padding: 12px 20px;
-            border-radius: 8px;
-            font-size: 16px;
+            padding: 15px 30px;
+            border-radius: 10px;
+            font-size: 18px;
             font-weight: bold;
             cursor: pointer;
             width: 100%;
+            margin-top: 20px;
+            transition: 0.3s;
         }
-        button:hover {
-            background-color: #ffa000;
+        .btn-official:hover {
+            background-color: #b0822a;
+            transform: translateY(-2px);
         }
-        .hidden { display: none; }
-        .balance-box {
-            background-color: #2c2c2c;
+        .features {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-top: 30px;
+            text-align: right;
+        }
+        .feature-box {
+            background: #18191a;
             padding: 15px;
             border-radius: 10px;
-            margin-bottom: 20px;
+            border-right: 4px solid var(--doge-gold);
         }
-        .amount {
-            color: #ffb300;
-            font-size: 28px;
-            font-weight: bold;
+        .feature-box h4 {
+            margin: 0 0 5px 0;
+            color: var(--doge-gold);
+            font-size: 14px;
         }
-        .qr-placeholder {
-            background: #fff;
-            padding: 10px;
-            display: inline-block;
-            border-radius: 8px;
-            margin-bottom: 15px;
+        .feature-box p {
+            margin: 0;
+            font-size: 12px;
         }
-        .address {
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: var(--doge-card);
+            color: var(--text-secondary);
             font-size: 13px;
-            color: #aaa;
-            word-break: break-all;
+            border-top: 1px solid #333;
         }
     </style>
 </head>
 <body>
 
-    <div class="container" id="loginScreen">
-        <h2>تسجيل الدخول 🔒</h2>
-        <p style="color: #aaa; font-size: 14px;">أدخل اسم المستخدم للوصول للمحفظة المركزية</p>
-        <input type="text" id="usernameInput" placeholder="اسم المستخدم...">
-        <br>
-        <button onclick="login()">دخول للمحفظة</button>
-    </div>
-
-    <div class="container hidden" id="walletScreen">
-        <h2 id="welcomeText">مرحباً</h2>
-        <div class="balance-box">
-            <p style="margin: 0; color: #888;">الرصيد المركزي</p>
-            <div class="amount">250.00 DOGE</div>
+    <header>
+        <div class="logo">
+            <span>🐕</span> Dogecoin Network
         </div>
-        
-        <div class="qr-placeholder">
-            <!-- صورة رمز تعبيري مكان QR للسهولة الفورية -->
-            <div style="font-size: 60px;">🐶</div>
-        </div>
-
-        <div class="address" id="walletAddress">D_CENTRALIZED_WEB_ADDRESS_999</div>
-        <br><br>
-        <button style="background-color: #444; color: #fff;" onclick="logout()">تسجيل خروج</button>
+        <div>
+            <span style="background: rgba(203,152,56,0.2); color: var(--doge-gold); padding: 8px 15px; border-radius: 20px; font-size: 14px; font-weight: bold;">الرسمي v2.0</span>
     </div>
+    </header>
 
-    <script>
-        function login() {
-            const username = document.getElementById('usernameInput').value;
-            if(username.trim() !== "") {
-                document.getElementById('welcomeText').innerText = "مرحباً، " + username + " 🐶";
-                document.getElementById('loginScreen').classList.add('hidden');
-                document.getElementById('walletScreen').classList.remove('hidden');
-            } else {
-                alert("الرجاء إدخال اسم المستخدم");
-            }
-        }
+    <main>
+        <div class="hero-card">
+            <h1>البوابة الرسمية لشبكة Doge</h1>
+            <p>منصة رقمية متكاملة تدار بأعلى معايير الأمان الموثوقة لخدمات المحافظ الرقمية والتحويلات اللامركزية.</p>
+            
+            <button class="btn-official" onclick="alert('جاري الانتقال لوحة التحكم الرئيسية والمحفظة الآمنة...')">دخول لوحة المحفظة</button>
 
-        function logout() {
-            document.getElementById('usernameInput').value = "";
-            document.getElementById('walletScreen').classList.add('hidden');
-            document.getElementById('loginScreen').classList.remove('hidden');
-        }
-    </script>
+            <div class="features">
+                <div class="feature-box">
+                    <h4>حماية فائقة</h4>
+                    <p>تشفير متطور لبياناتك بالكامل.</p>
+                </div>
+                <div class="feature-box">
+                    <h4>سرعة فائقة</h4>
+                    <p>معاملات فورية بدون تأخير.</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        جميع الحقوق محفوظة لشبكة ومحفظة Doge &copy; 2026
+    </footer>
+
 </body>
 </html>
